@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- --prefix=/usr --mandir=\$${prefix}/share/man \
+	             --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH) \
+	             --infodir=\$${prefix}/share/info \
+	             --disable-silent-rules
+
+override_dh_clean:
+	rm -f build-stamp
+	rm -f config.cache config.log config.status
+	rm -f */config.cache */config.log */config.status
+	rm -f conftest* */conftest*
+	rm -rf autom4te.cache */autom4te.cache
+	rm -rf build
+	rm -f aclocal.m4 config.guess config.h.in config.sub configure
+	rm -f depcomp install-sh ltmain.sh missing mkinstalldirs
+	find -name Makefile.in -delete
+	dh_clean
+
+override_dh_install:
+	dh_install --exclude=libXdamage.la
+	dh_missing --list-missing -XlibXdamage.la
