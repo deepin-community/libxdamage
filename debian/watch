@@ -1,3 +1,5 @@
-#git=git://anongit.freedesktop.org/xorg/lib/libXdamage
-version=3
-http://xorg.freedesktop.org/releases/individual/lib/ libXdamage-(.*)\.tar\.gz
+Version: 5
+
+#git=https://gitlab.freedesktop.org/xorg/lib/libxdamage.git
+Source: http://xorg.freedesktop.org/releases/individual/lib/
+Matching-Pattern: libXdamage@ANY_VERSION@@ARCHIVE_EXT@

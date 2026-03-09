@@ -22,4 +22,3 @@ override_dh_clean:
 
 override_dh_install:
 	dh_install --exclude=libXdamage.la
-	dh_missing --list-missing -XlibXdamage.la
